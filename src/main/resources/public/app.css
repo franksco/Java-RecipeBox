@@ -7,3 +7,9 @@
 li{
   font-size: 1.4em;
 }
+textarea {
+    resize: none;
+    overflow: hidden;
+    min-height: 60px;
+    max-height: 500px;
+}
