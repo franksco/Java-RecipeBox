@@ -1,0 +1,16 @@
+<h1>$recipe.getName()</h1>
+<h2>Ingredients</h2>
+<ul>
+#foreach($ingredient in $recipe.getIngredients())
+  #if($ingredient != "")
+    <li>$ingredient</li>
+  #end
+#end
+</ul>
+<h2>Directions</h2>
+<ol>
+#foreach($direction in $recipe.getDirections())
+  <li>$direction</li>
+#end
+</ol>
+<p><a href="/">Home</a></p>

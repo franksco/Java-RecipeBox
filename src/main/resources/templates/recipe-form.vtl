@@ -1,0 +1,18 @@
+<h1>Add new Recipe</h1>
+
+<form action="/recipe" method="post">
+  <div class="form-group">
+    <label for="name">Recipe Name</label>
+    <input id="name" name="name" class="form-control" type="text">
+  </div>
+  <div class="form-group">
+    <label for="ingredients">Ingredients</label>
+    <textarea id="ingredients" name="ingredients" placeholder="Enter each Ingredient on a separate line" class="form-control" type="text"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="directions">Directions</label>
+    <textarea id="directions" name="directions" placeholder="Enter each Direction on a separate line" class="form-control" type="text"></textarea>
+  </div>
+    <button type="submit" class="btn btn-success">Add Recipe</button>
+
+</form>
