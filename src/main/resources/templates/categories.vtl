@@ -1,5 +1,7 @@
-<h1>All categories</h1>
-
+<div class="jumbotron">
+  <h1>All categories</h1>
+</div>
+<div class="container cback">
 <ul>
   #foreach ($category in $categories)
       <li><a href="/categories/$category.getId()">$category.getName()</a></li>
@@ -18,3 +20,4 @@
 </form>
 
 <p><a href="/">Home</a></p>
+</div>

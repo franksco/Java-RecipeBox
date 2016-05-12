@@ -1,4 +1,8 @@
+
+<div class="jumbotron">
 <h1>Add new Recipe</h1>
+</div>
+<div class="container cback">
 
 <form action="/recipe" method="post">
   <div class="form-group">
@@ -13,6 +17,19 @@
     <label for="directions">Directions</label>
     <textarea id="directions" name="directions" onkeyup="auto_grow(this)" placeholder="Enter each Direction on a separate line" class="form-control" type="text"></textarea>
   </div>
+  <div class="form-group">
+    <label for="tags">Tags</label>
+    #set( $a = 0 )
+    #foreach($category in $categories)
+      #set($a = $a+1)
+      <input type="checkbox" name="tags" class="mycheckbox" value="$category.getId()">$category.getName()
+      #if($a == 10)
+        #set( $a = 0 )
+        <br>
+      #end
+    #end
+  </div>
     <button type="submit" class="btn btn-success">Add Recipe</button>
 
 </form>
+</div>

@@ -19,7 +19,7 @@ public class Category {
   }
 
   public static List<Category> all() {
-    String sql = "SELECT * FROM Categories";
+    String sql = "SELECT * FROM categories";
     try(Connection con = DB.sql2o.open()) {
       return con.createQuery(sql).executeAndFetch(Category.class);
     }
@@ -38,7 +38,7 @@ public class Category {
 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO Categories(name) VALUES (:name)";
+      String sql = "INSERT INTO categories(name) VALUES (:name)";
       this.id = (int) con.createQuery(sql, true)
       .addParameter("name", this.name)
       .executeUpdate()
@@ -48,7 +48,7 @@ public class Category {
 
   public static Category find(int id) {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "SELECT * FROM Categories where id=:id";
+      String sql = "SELECT * FROM categories where id=:id";
       Category category = con.createQuery(sql)
       .addParameter("id", id)
       .executeAndFetchFirst(Category.class);
@@ -63,7 +63,7 @@ public class Category {
         .addParameter("id", this.getId())
         .executeUpdate();
 
-    String joinDeleteQuery = "DELETE FROM categories_recipes WHERE category_id = :categoryId";
+    String joinDeleteQuery = "DELETE FROM category_recipe WHERE category_id = :categoryId";
       con.createQuery(joinDeleteQuery)
         .addParameter("categoryId", this.getId())
         .executeUpdate();
@@ -72,7 +72,7 @@ public class Category {
 
   public void addRecipe(Recipe recipe) {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO categories_recipes (category_id, recipe_id) VALUES (:category_id, :recipe_id)";
+      String sql = "INSERT INTO category_recipe (category_id, recipe_id) VALUES (:category_id, :recipe_id)";
       con.createQuery(sql)
       .addParameter("category_id", this.getId())
       .addParameter("recipe_id", recipe.getId())
@@ -83,21 +83,11 @@ public class Category {
 
   public List<Recipe> getRecipes() {
     try(Connection con = DB.sql2o.open()){
-      String joinQuery = "SELECT recipe_id FROM categories_recipes WHERE category_id = :category_id";
-      List<Integer> recipeIds = con.createQuery(joinQuery)
+      String joinQuery = "SELECT recipes.* FROM categories JOIN category_recipe ON (categories.id = category_recipe.category_id) JOIN recipes ON (category_recipe.recipe_id = recipes.id) WHERE categories.id = :category_id";
+      List<Recipe> ingredients = con.createQuery(joinQuery)
       .addParameter("category_id", this.getId())
-      .executeAndFetch(Integer.class);
-
-      List<Recipe> recipes = new ArrayList<Recipe>();
-
-      for (Integer recipeId : recipeIds) {
-        String recipeQuery = "Select * From recipes WHERE id = :recipeId ORDER BY duedate ASC";
-    Recipe recipe = con.createQuery(recipeQuery)
-        .addParameter("recipeId", recipeId)
-        .executeAndFetchFirst(Recipe.class);
-        recipes.add(recipe);
-      }
-      return recipes;
+      .executeAndFetch(Recipe.class);
+      return ingredients;
     }
   }
 

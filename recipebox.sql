@@ -317,6 +317,18 @@ ALTER TABLE ONLY recipes ALTER COLUMN id SET DEFAULT nextval('recipes_id_seq'::r
 --
 
 COPY categories (id, name) FROM stdin;
+1	Breakfast
+2	Lunch
+3	Dinner
+4	Eggs
+5	Bacon
+6	Salad
+7	Pie
+8	Cake
+9	Dessert
+10	Cookies
+11	Thanksgiving
+12	Steak
 \.
 
 
@@ -324,7 +336,7 @@ COPY categories (id, name) FROM stdin;
 -- Name: categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('categories_id_seq', 1, false);
+SELECT pg_catalog.setval('categories_id_seq', 12, true);
 
 
 --
@@ -332,6 +344,13 @@ SELECT pg_catalog.setval('categories_id_seq', 1, false);
 --
 
 COPY category_recipe (id, category_id, recipe_id) FROM stdin;
+1	2	1
+2	3	1
+3	1	2
+4	2	2
+5	3	2
+6	7	2
+7	11	2
 \.
 
 
@@ -339,7 +358,7 @@ COPY category_recipe (id, category_id, recipe_id) FROM stdin;
 -- Name: category_recipe_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('category_recipe_id_seq', 1, false);
+SELECT pg_catalog.setval('category_recipe_id_seq', 7, true);
 
 
 --
@@ -347,22 +366,13 @@ SELECT pg_catalog.setval('category_recipe_id_seq', 1, false);
 --
 
 COPY directions (id, direction) FROM stdin;
-1	Whisk barbeque sauce, apple butter, brown sugar, black pepper, and garlic together in a microwave-safe bowl; heat in microwave until sugar dissolves, about 30 seconds. Stir until sauce is smooth.\r
-2	Place pork chops on a plate and pour sauce over chops. Refrigerate for flavors to soak into pork chops, 1 to 2 hours.\r
-3	Preheat an outdoor grill for medium-high heat and lightly oil the grate.\r
-4	Cook pork chops on grill until cooked through, about 15 minutes. An instant-read thermometer inserted into the center should read 145 degrees F (63 degrees C).
-5	Whisk barbeque sauce, apple butter, brown sugar, black pepper, and garlic together in a microwave-safe bowl; heat in microwave until sugar dissolves, about 30 seconds. Stir until sauce is smooth.\r
-6	Place pork chops on a plate and pour sauce over chops. Refrigerate for flavors to soak into pork chops, 1 to 2 hours.\r
-7	Preheat an outdoor grill for medium-high heat and lightly oil the grate.\r
-8	Cook pork chops on grill until cooked through, about 15 minutes. An instant-read thermometer inserted into the center should read 145 degrees F (63 degrees C).
-9	skjdhskjhgjsdhgksjhdgksjhdgorug[piuet[wsd;kfgjs;erkgj;d,gjsl;rlkgjsl;dkdrlkgjhselfkhslkjghsrljxnc,vmshrglsjkdfhv,smrkghsl
-10	Place cumin seeds into a small skillet over medium heat; stir constantly until seeds turn dark brown and smell toasted, about 1 minute. Immediately pour seeds into a bowl to stop the cooking. Mix cumin seeds with orange juice, vegetable oil, steak seasoning, lime juice, and oregano in a bowl.\r
-11	Place steaks into a large resealable plastic bag, pour orange juice marinade over the meat, and squeeze out air. Seal bag and turn it over several times to coat meat with marinade. Refrigerate at least 30 minutes, or longer for extra flavor.\r
-12	Preheat an outdoor grill for medium-high heat and lightly oil the grate.\r
-13	Remove steaks from marinade, shaking off any excess. Discard used marinade. Grill steaks on the preheated grill until seared on the outsides and still slightly pink in the centers, 6 to 8 minutes per side. An instant-read meat thermometer inserted sideways into the center of the thickest steak should read 145 degrees F (65 degrees C). Let steaks rest for 3 minutes before slicing.
-14	Preheat oven to 375 degrees F (190 degrees C). Lightly grease a 10 inch quiche dish.\r
-15	In a large bowl, beat together milk, eggs, baking mix, butter and parmesan cheese. Batter will be lumpy. Stir in broccoli, ham and Cheddar cheese. Pour into prepared quiche dish.\r
-16	Bake in preheated oven for 50 minutes, until eggs are set and top is golden brown.
+1	Using a rolling pin, crush Pretzel Crisps(R) until fine, but with some texture. Transfer to a clean plate. In a bowl, beat together the egg and one cup of the buffalo wing sauce, and set aside. Dip each chicken tender first in the egg mixture and roll to coat in the crushed pretzels.\r
+2	In a large skillet, heat oil over medium high heat until shimmering. Add chicken tenders and cook, turning often, until golden brown on all sides (about six minutes total). Transfer to paper towels to drain. In a small bowl, combine mayonnaise, sour cream, blue cheese, and Worcestershire sauce. Serve blue cheese sauce with chicken and remaining 1/2 cup or reserved wing sauce.
+3	Preheat oven to 425 degrees F (220 degrees C.)\r
+4	In a saucepan, combine chicken, carrots, peas, and celery. Add water to cover and boil for 15 minutes. Remove from heat, drain and set aside.\r
+5	In the saucepan over medium heat, cook onions in butter until soft and translucent. Stir in flour, salt, pepper, and celery seed. Slowly stir in chicken broth and milk. Simmer over medium-low heat until thick. Remove from heat and set aside.\r
+6	Place the chicken mixture in bottom pie crust. Pour hot liquid mixture over. Cover with top crust, seal edges, and cut away excess dough. Make several small slits in the top to allow steam to escape.\r
+7	Bake in the preheated oven for 30 to 35 minutes, or until pastry is golden brown and filling is bubbly. Cool for 10 minutes before serving.
 \.
 
 
@@ -370,7 +380,7 @@ COPY directions (id, direction) FROM stdin;
 -- Name: directions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('directions_id_seq', 16, true);
+SELECT pg_catalog.setval('directions_id_seq', 7, true);
 
 
 --
@@ -378,37 +388,27 @@ SELECT pg_catalog.setval('directions_id_seq', 16, true);
 --
 
 COPY ingredients (id, ingredient) FROM stdin;
-1	1/2 cup barbeque sauce\r
-2	1/4 cup apple butter\r
-3	2 tablespoons brown sugar\r
-4	1 tablespoon ground black pepper\r
-5	2 cloves garlic, minced\r
-6	3 (4 ounce) pork chops\r
-7	\r
-8	1/2 cup barbeque sauce\r
-9	1/4 cup apple butter\r
-10	2 tablespoons brown sugar\r
-11	1 tablespoon ground black pepper\r
-12	2 cloves garlic, minced\r
-13	3 (4 ounce) pork chops\r
-14	\r
-15	dgfgsdfgsdfsdfsdgdfgsdfsdgsfd.g,sndg.msndsndgmnsdgmnsd,mgnsdkjhnsdgnlsdhgsjhdlgkhsdlkghsdlkhgsldkhglksdhglkhsdlkghskldhglsdkhglksdhglskdhglksdhglksdhglksdhglkshdglkshdkghsdlgkhsdlkghsdlghsdlkghsdlkghsdlghsdlkghsldkghsdlkghslkdhgslkdhglskdhglksdhgklsdhgshdlgkhsdlkshdglsdlgkhsdlkghsdlkghsdlkghdgklhsdlkghsdglksdhglkshdglkhsdikh\r
-16	sdljhdsjhsdgjhsdgjhdgjsdhgklsdjhskdjghskdjghs
-17	1/2 teaspoon cumin seeds\r
-18	1/4 cup orange juice\r
-19	2 tablespoons vegetable oil\r
-20	2 tablespoons Montreal-style steak seasoning\r
-21	2 1/4 teaspoons lime juice\r
-22	1 1/2 teaspoons dried oregano\r
-23	1 1/2 pounds beef rib-eye steaks
-24	2 cups milk\r
-25	4 eggs\r
-26	3/4 cup biscuit baking mix\r
-27	1/4 cup butter, softened\r
-28	1 cup grated Parmesan cheese\r
-29	1 (10 ounce) package chopped frozen broccoli, thawed and drained\r
-30	1 cup cubed cooked ham\r
-31	8 ounces shredded Cheddar cheese
+1	2 cups Buffalo Wing Snack Factory® Pretzel Crisps®\r
+2	1 pound chicken tenders\r
+3	1 egg\r
+4	1 1/2 cups buffalo wing sauce, divided\r
+5	1/4 cup peanut oil\r
+6	2 tablespoons mayonnaise\r
+7	1 tablespoon sour cream\r
+8	1/4 cup blue cheese crumbles, or to taste\r
+9	1 dash Worcestershire sauce
+10	1 pound skinless, boneless chicken breast halves - cubed\r
+11	1 cup sliced carrots\r
+12	1 cup frozen green peas\r
+13	1/3 cup butter\r
+14	1/3 cup chopped onion\r
+15	1/3 cup all-purpose flour\r
+16	1/2 teaspoon salt\r
+17	1/4 teaspoon black pepper\r
+18	1/4 teaspoon celery seed\r
+19	1 3/4 cups chicken broth\r
+20	2/3 cup milk\r
+21	2 (9 inch) unbaked pie crusts
 \.
 
 
@@ -416,7 +416,7 @@ COPY ingredients (id, ingredient) FROM stdin;
 -- Name: ingredients_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('ingredients_id_seq', 31, true);
+SELECT pg_catalog.setval('ingredients_id_seq', 21, true);
 
 
 --
@@ -426,20 +426,11 @@ SELECT pg_catalog.setval('ingredients_id_seq', 31, true);
 COPY recipe_directions (id, recipe_id, direction_id) FROM stdin;
 1	1	1
 2	1	2
-3	1	3
-4	1	4
+3	2	3
+4	2	4
 5	2	5
 6	2	6
 7	2	7
-8	2	8
-9	3	9
-10	4	10
-11	4	11
-12	4	12
-13	4	13
-14	5	14
-15	5	15
-16	5	16
 \.
 
 
@@ -447,7 +438,7 @@ COPY recipe_directions (id, recipe_id, direction_id) FROM stdin;
 -- Name: recipe_directions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('recipe_directions_id_seq', 16, true);
+SELECT pg_catalog.setval('recipe_directions_id_seq', 7, true);
 
 
 --
@@ -462,30 +453,20 @@ COPY recipe_ingredients (id, recipe_id, ingredient_id) FROM stdin;
 5	1	5
 6	1	6
 7	1	7
-8	2	8
-9	2	9
+8	1	8
+9	1	9
 10	2	10
 11	2	11
 12	2	12
 13	2	13
 14	2	14
-15	3	15
-16	3	16
-17	4	17
-18	4	18
-19	4	19
-20	4	20
-21	4	21
-22	4	22
-23	4	23
-24	5	24
-25	5	25
-26	5	26
-27	5	27
-28	5	28
-29	5	29
-30	5	30
-31	5	31
+15	2	15
+16	2	16
+17	2	17
+18	2	18
+19	2	19
+20	2	20
+21	2	21
 \.
 
 
@@ -493,7 +474,7 @@ COPY recipe_ingredients (id, recipe_id, ingredient_id) FROM stdin;
 -- Name: recipe_ingredients_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('recipe_ingredients_id_seq', 31, true);
+SELECT pg_catalog.setval('recipe_ingredients_id_seq', 21, true);
 
 
 --
@@ -501,11 +482,8 @@ SELECT pg_catalog.setval('recipe_ingredients_id_seq', 31, true);
 --
 
 COPY recipes (id, name) FROM stdin;
-1	Southern Sweet Grilled Pork Chops
-2	Southern Sweet Grilled Pork Chops
-3	dfsd
-4	Cuban Marinated Steak
-5	Easy Quiche
+1	Buffalo Chicken Fingers from Pretzel Crisps
+2	Chicken Pot Pie IX
 \.
 
 
@@ -513,7 +491,7 @@ COPY recipes (id, name) FROM stdin;
 -- Name: recipes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('recipes_id_seq', 5, true);
+SELECT pg_catalog.setval('recipes_id_seq', 2, true);
 
 
 --

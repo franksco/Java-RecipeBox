@@ -11,14 +11,21 @@ public class Recipe {
   private int ingredientid;
   private int directionid;
   private String name;
+  private List<Integer> checkedTags = new ArrayList<Integer>();
   private List<String> arrayOfIngred = new ArrayList<String>();
   private List<String> arrayOfDirect = new ArrayList<String>();
 
 
-  public Recipe(String name, List<String> array1, List<String> array2) {
+  public Recipe(String name, List<String> array1, List<String> array2, String[] stringTags) {
     this.name = name;
     this.arrayOfIngred = array2;
     this.arrayOfDirect = array1;
+    List<Integer> intTags = new ArrayList<Integer>();
+    for(String stringtag : stringTags){
+      intTags.add(Integer.parseInt(stringtag));
+    }
+    this.checkedTags = intTags;
+
   }
 
   public String getName() {
@@ -37,12 +44,12 @@ public class Recipe {
     return directionid;
   }
 
-  public static List<Recipe> all() {
-    String sql = "SELECT * FROM recipes ORDER BY directions ASC";
-    try(Connection con = DB.sql2o.open()) {
-      return con.createQuery(sql).executeAndFetch(Recipe.class);
-    }
-  }
+  // public static List<Recipe> all() {
+  //   String sql = "SELECT * FROM recipes ORDER BY directions ASC";
+  //   try(Connection con = DB.sql2o.open()) {
+  //     return con.createQuery(sql).executeAndFetch(Recipe.class);
+  //   }
+  // }
 
   // @Override
   // public boolean equals(Object otherRecipe){
@@ -90,24 +97,32 @@ public class Recipe {
         .addParameter("direction_id", this.getDirectionId())
         .executeUpdate();
       }
+
+      for (Integer checkedtag : this.checkedTags) {
+        String joincategory_recipeTableAdd = "INSERT INTO category_recipe (category_id, recipe_id) VALUES (:category_id, :recipe_id)";
+        con.createQuery(joincategory_recipeTableAdd)
+        .addParameter("category_id", checkedtag)
+        .addParameter("recipe_id", this.getId())
+        .executeUpdate();
+      }
     }
   }
 
 
 
-  public void delete() {
-    try(Connection con = DB.sql2o.open()) {
-      String deleteQuery = "DELETE FROM recipes WHERE id = :id;";
-        con.createQuery(deleteQuery)
-          .addParameter("id", this.getId())
-          .executeUpdate();
-
-      String joinDeleteQuery = "DELETE FROM categories_recipes WHERE recipe_id = :recipeId";
-        con.createQuery(joinDeleteQuery)
-          .addParameter("recipeId", this.getId())
-          .executeUpdate();
-    }
-  }
+  // public void delete() {
+  //   try(Connection con = DB.sql2o.open()) {
+  //     String deleteQuery = "DELETE FROM recipes WHERE id = :id;";
+  //       con.createQuery(deleteQuery)
+  //         .addParameter("id", this.getId())
+  //         .executeUpdate();
+  //
+  //     String joinDeleteQuery = "DELETE FROM categories_recipes WHERE recipe_id = :recipeId";
+  //       con.createQuery(joinDeleteQuery)
+  //         .addParameter("recipeId", this.getId())
+  //         .executeUpdate();
+  //   }
+  // }
 
   public static Recipe find(int id) {
     try(Connection con = DB.sql2o.open()) {
@@ -118,16 +133,6 @@ public class Recipe {
       return recipe;
     }
   }
-
-  // public void addCategory(Category category) {
-  //   try(Connection con = DB.sql2o.open()) {
-  //     String sql = "INSERT INTO categories_recipes (category_id, recipe_id) VALUES (:category_id, :recipe_id)";
-  //     con.createQuery(sql)
-  //     .addParameter("category_id", category.getId())
-  //     .addParameter("recipe_id", this.getId())
-  //     .executeUpdate();
-  //   }
-  // }
 
   public List<String> getIngredients() {
     try(Connection con = DB.sql2o.open()){
