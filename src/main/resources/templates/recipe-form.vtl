@@ -11,25 +11,26 @@
   </div>
   <div class="form-group">
     <label for="ingredients">Ingredients</label>
-    <textarea id="ingredients" name="ingredients" onkeyup="auto_grow(this)" placeholder="Enter each Ingredient on a separate line" class="form-control" type="text"></textarea>
+    <textarea id="ingredients" name="ingredients" onkeyup="auto_grow(this)" placeholder="Enter each Ingredient on a separate line" class="form-control" id="textarea1" type="text"></textarea>
   </div>
   <div class="form-group">
     <label for="directions">Directions</label>
-    <textarea id="directions" name="directions" onkeyup="auto_grow(this)" placeholder="Enter each Direction on a separate line" class="form-control" type="text"></textarea>
+    <textarea id="directions" name="directions" onkeyup="auto_grow(this)" placeholder="Enter each Direction on a separate line" class="form-control" id="textarea2" type="text"></textarea>
   </div>
   <div class="form-group">
     <label for="tags">Tags</label>
+    <br>
     #set( $a = 0 )
     #foreach($category in $categories)
       #set($a = $a+1)
-      <input type="checkbox" name="tags" class="mycheckbox" value="$category.getId()">$category.getName()
-      #if($a == 10)
+      <input type="checkbox" name="tags" class="mycheckbox" id="$category.getId()" value="$category.getId()"><label for="$category.getId()" class="mylabel">$category.getName()</label>
+      #* #if($a == 10)
         #set( $a = 0 )
         <br>
-      #end
+      #end *#
     #end
   </div>
-    <button type="submit" class="btn btn-success">Add Recipe</button>
+    <button type="submit" class="btn btn-mycolor btn-lg">Add Recipe</button>
 
 </form>
 </div>

@@ -13,8 +13,25 @@ textarea {
     min-height: 60px;
     max-height: 500px;
 }
-.mycheckbox{
-  margin-left: 1em;
+.mylabel{
+  font-size: 1.4vmax;
+  margin-right: 3em;
+  margin-left: .5em;
+  color: #B8B6B6;
+}
+
+.mylabel:hover{
+  margin-right: 3em;
+  margin-left: .5em;
+  color: #8B0010;
+  text-decoration: underline;
+}
+
+.mycheckbox {
+  display: none;
+}
+input[type=checkbox]:checked + label {
+  color: #8B0010;
 }
 .content:before {
   content: "";
@@ -32,59 +49,187 @@ textarea {
   -o-background-size: cover;
   background-size: cover;
   background-attachment: fixed;
-  -webkit-filter: blur(3px);
-  -moz-filter: blur(3px);
-  -o-filter: blur(3px);
-  -ms-filter: blur(3px);
-  filter: blur(3px);
+  -webkit-filter: blur(2.5px);
+  -moz-filter: blur(2.5px);
+  -o-filter: blur(2.5px);
+  -ms-filter: blur(2.5px);
+  filter: blur(2.5px);
 }
-
+.white{
+  font-size: 1.2vmax;
+  line-height: 100%;
+}
+.bigger{
+  font-size: 1.8vmax;
+  line-height: 100%;
+  font-weight: bold;
+}
 .content {
   left: 0;
   right: 0;
   z-index: 0;
 }
 .jumbotron{
+  height: 13vh;
+  line-height: 200px;
+  min-height: 175px;
+  max-height: 250px;
   background: rgba(238, 238, 238, 0.7);
   text-align: center;
 }
 .link a{
-    color: #ae0015 !important;
+    color: #8B0010!important;
 }
 .link a:hover {
-    color: #790312 !important;
+    color: #3C0109 !important;
 }
-.btn-wide{
-  background: rgba(255, 255, 255, 0.85);
-  min-height: 3em;
-  width: 100%;
-  height: 9vh;
-  font-size: 200%;
+h2{
+  color: #8B0010!important;
 }
-.btn-wide:hover{
-  background: rgba(217, 217, 217, 0.85);
-  min-height: 3em;
-  width: 100%;
-  height: 9vh;
-  font-size: 200%;
+.navbar{
+  background: rgba(238, 238, 238, 0.7);
+  border: none;
+  height: 5vh;
 }
 
 .content{
   margin-top: auto;
   margin-bottom: auto;
 }
+label{
+  font-size: 2vmax;
+  color: #8B0010;
+}
+textarea #textarea1, #textarea2{
+  font-size: 2vmax;
+}
+.btn-mycolor{
+  background-color: #8B0010;
+  color: white;
+}
+
+.btn-mycolor:hover{
+  background-color: #3C0109;
+  color: white;
+}
 .cback{
   padding: 2em;
-  height: 100vh;
-  padding-bottom: 8em;
+  height: 75vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-bottom: 2em;
   background: rgba(255, 255, 255, 0.85);
 }
 hr{
-  background: rgba(238, 238, 238, 0.85);
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid rgba(193,193,193, 0.75);
+  margin: 1em 0;
+  padding: 0;
 }
-.cback li{
-  font-size: 2vmin;
-}
-.cback a{
-  font-size: 1.4vmin;
+
+@media only screen and (min-width : 320px) {
+  .cback li{
+    font-size: 1em;
+  }
+  .col-md-5{
+    text-align: center;
+    font-size: 2em;
+    background: rgba(238, 238, 238, 0.8);
+  }
+  .col-md-5:hover{
+    text-align: center;
+    font-size: 2em;
+    background: rgba(184,184,184, 0.8);
+  }
+ }
+
+ /* Extra Small Devices, Phones */
+ @media only screen and (min-width : 480px) {
+   .cback li{
+     font-size: 1.3em;
+   }
+   .col-md-5{
+     text-align: center;
+     font-size: 2em;
+     background: rgba(238, 238, 238, 0.8);
+   }
+   .col-md-5:hover{
+     text-align: center;
+     font-size: 2em;
+     background: rgba(184,184,184, 0.8);
+   }
+ }
+
+ /* Small Devices, Tablets */
+ @media only screen and (min-width : 768px) {
+   .cback li{
+     font-size: 1.5em;
+   }
+  .jumbotron h1{
+     font-size: 3.3em;
+   }
+   .col-md-5{
+     text-align: center;
+     font-size: 2.5em;
+     background: rgba(238, 238, 238, 0.8);
+   }
+   .col-md-5:hover{
+     text-align: center;
+      font-size: 2.5em;
+     background: rgba(184,184,184, 0.8);
+   }
+
+ }
+
+ /* Medium Devices, Desktops */
+ @media only screen and (min-width : 992px) {
+   .jumbotron h1{
+      font-size: 3.8em;
+    }
+   .cback li{
+     font-size: 2.1em;
+   }
+   .col-md-5{
+     margin-top: 20vmin;
+     text-align: center;
+     font-size: 3em;
+     width: 41.666666%;
+     background: rgba(238, 238, 238, 0.8);
+   }
+   .col-md-5:hover{
+     margin-top: 20vmin;
+     text-align: center;
+     font-size: 3em;
+     width: 41.666666%;
+     background: rgba(184,184,184, 0.8);
+   }
+
+ }
+
+ /* Large Devices, Wide Screens */
+ @media only screen and (min-width : 1200px) {
+   .cback li{
+     font-size: 2.2em;
+   }
+   .col-md-5{
+     margin-top: 20vmin;
+     text-align: center;
+     font-size: 4em;
+     width: 41.666666%;
+     background: rgba(238, 238, 238, 0.8);
+   }
+
+   .col-md-5:hover{
+     margin-top: 20vmin;
+     text-align: center;
+     font-size: 4em;
+     width: 41.666666%;
+     background: rgba(184,184,184, 0.8);
+   }
+
+ }
+ .vcenter {
+   line-height: 330%;
 }

@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Tasks</title>
+    <title>RecipeBox</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
     <link rel='stylesheet' href='/app.css'>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript">
        function auto_grow(element) {
           element.style.height = "5px";
@@ -16,7 +19,27 @@
     <div class="link content">
 
       #parse( $template )
-      
+
       <div>
+
+<!-- Navbar -->
+ <div class="navbar navbar-inverse navbar-fixed-bottom">
+     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+       <span class="icon-bar"></span>
+       <span class="icon-bar"></span>
+       <span class="icon-bar"></span>
+     </button>
+     <div class="container">
+     <a class="navbar-brand text-muted" href="/"><span class="bigger">RecipeBox</span></a>
+     <div class="collapse navbar-collapse">
+       <ul class="nav navbar-nav navbar-right">
+         <li><a href="/"><span class="white">Home</span></a></li>
+         <li><a href="/categories"><span class="white">Categories</span></a></li>
+         <li><a href="/recipes/new"><span class="white">New Recipe</span></a></li>
+       </ul>
+     </div>
+   </div>
+ </div>
+<!-- Navbar -->
   </body>
 </html>
