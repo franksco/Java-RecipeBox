@@ -1,6 +1,6 @@
-# Hair Salon
+# RecipeBox
 
-#### Database Week 3 independent project
+#### Add your Favorite Recipe
 
 #### by Garrett Biernat 5/6
 ## Description
