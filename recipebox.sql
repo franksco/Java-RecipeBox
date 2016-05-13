@@ -329,6 +329,7 @@ COPY categories (id, name) FROM stdin;
 10	Cookies
 11	Thanksgiving
 12	Steak
+13	Ice cream
 \.
 
 
@@ -336,7 +337,7 @@ COPY categories (id, name) FROM stdin;
 -- Name: categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('categories_id_seq', 12, true);
+SELECT pg_catalog.setval('categories_id_seq', 13, true);
 
 
 --
@@ -351,6 +352,9 @@ COPY category_recipe (id, category_id, recipe_id) FROM stdin;
 5	3	2
 6	7	2
 7	11	2
+8	5	3
+9	9	3
+10	13	3
 \.
 
 
@@ -358,7 +362,7 @@ COPY category_recipe (id, category_id, recipe_id) FROM stdin;
 -- Name: category_recipe_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('category_recipe_id_seq', 7, true);
+SELECT pg_catalog.setval('category_recipe_id_seq', 10, true);
 
 
 --
@@ -373,6 +377,10 @@ COPY directions (id, direction) FROM stdin;
 5	In the saucepan over medium heat, cook onions in butter until soft and translucent. Stir in flour, salt, pepper, and celery seed. Slowly stir in chicken broth and milk. Simmer over medium-low heat until thick. Remove from heat and set aside.\r
 6	Place the chicken mixture in bottom pie crust. Pour hot liquid mixture over. Cover with top crust, seal edges, and cut away excess dough. Make several small slits in the top to allow steam to escape.\r
 7	Bake in the preheated oven for 30 to 35 minutes, or until pastry is golden brown and filling is bubbly. Cool for 10 minutes before serving.
+8	cook bacon until crispy\r
+9	scoop 3 scoops of vanilla ice cream out into bowl\r
+10	top with bacon\r
+11	drizzle with carmel
 \.
 
 
@@ -380,7 +388,7 @@ COPY directions (id, direction) FROM stdin;
 -- Name: directions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('directions_id_seq', 7, true);
+SELECT pg_catalog.setval('directions_id_seq', 11, true);
 
 
 --
@@ -409,6 +417,9 @@ COPY ingredients (id, ingredient) FROM stdin;
 19	1 3/4 cups chicken broth\r
 20	2/3 cup milk\r
 21	2 (9 inch) unbaked pie crusts
+22	3 scoops Vanilla Ice Cream\r
+23	1/2 lbs bacon \r
+24	1/4 cup carmel sauce
 \.
 
 
@@ -416,7 +427,7 @@ COPY ingredients (id, ingredient) FROM stdin;
 -- Name: ingredients_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('ingredients_id_seq', 21, true);
+SELECT pg_catalog.setval('ingredients_id_seq', 24, true);
 
 
 --
@@ -431,6 +442,10 @@ COPY recipe_directions (id, recipe_id, direction_id) FROM stdin;
 5	2	5
 6	2	6
 7	2	7
+8	3	8
+9	3	9
+10	3	10
+11	3	11
 \.
 
 
@@ -438,7 +453,7 @@ COPY recipe_directions (id, recipe_id, direction_id) FROM stdin;
 -- Name: recipe_directions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('recipe_directions_id_seq', 7, true);
+SELECT pg_catalog.setval('recipe_directions_id_seq', 11, true);
 
 
 --
@@ -467,6 +482,9 @@ COPY recipe_ingredients (id, recipe_id, ingredient_id) FROM stdin;
 19	2	19
 20	2	20
 21	2	21
+22	3	22
+23	3	23
+24	3	24
 \.
 
 
@@ -474,7 +492,7 @@ COPY recipe_ingredients (id, recipe_id, ingredient_id) FROM stdin;
 -- Name: recipe_ingredients_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('recipe_ingredients_id_seq', 21, true);
+SELECT pg_catalog.setval('recipe_ingredients_id_seq', 24, true);
 
 
 --
@@ -484,6 +502,7 @@ SELECT pg_catalog.setval('recipe_ingredients_id_seq', 21, true);
 COPY recipes (id, name) FROM stdin;
 1	Buffalo Chicken Fingers from Pretzel Crisps
 2	Chicken Pot Pie IX
+3	Bacon Carmel Vanilla Ice Cream
 \.
 
 
@@ -491,7 +510,7 @@ COPY recipes (id, name) FROM stdin;
 -- Name: recipes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('recipes_id_seq', 2, true);
+SELECT pg_catalog.setval('recipes_id_seq', 3, true);
 
 
 --
