@@ -2,13 +2,13 @@
 
 #### Add your Favorite Recipe
 
-#### by Garrett Biernat 5/6
+#### by Cory Franks 5/6
 ## Description
 A web page made in java that allows you to add categories and then add recipes with categories and ingredients and directions using an SQL database
 
 ## Setup/Installation Requirements
 
-* Clone repository or go to: https://secret-tor-44806.herokuapp.com/
+* Clone repository
 * Install gradle
 * add the SQL file into your local PSQL database
 * enter "gradle run" in the repositories directory
@@ -30,4 +30,4 @@ None so far
 
 MIT License
 
-Copyright (c) 2016 GDB Media, Inc.
+Copyright (c) 2016 Cory Franks.
